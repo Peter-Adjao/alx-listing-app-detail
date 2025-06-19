@@ -2,7 +2,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <header className="bg-white shadow px-6 py-4">
+    <header className="sticky top-0 z-50 bg-white shadow px-6 py-4">
       {/* Top Row: Logo, Search, Auth Buttons */}
       <div className="flex justify-between items-center">
         <div className="text-2xl font-bold">🏠 ALX Listings</div>

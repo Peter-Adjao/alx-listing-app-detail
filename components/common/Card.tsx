@@ -11,13 +11,13 @@ const Card: React.FC<PropertyProps> = ({
   address,
 }) => {
     return (
-      <div className="overflow-hidden bg-white rounded-xl shadow-md">
+      <div className="overflow-hidden bg-white">
         <Image
           src={image}
           alt={name}
           width={400}
           height={200}
-          className="w-full h-48 object-cover rounded-t-xl" />
+          className="w-full h-50 object-cover rounded-xl" />
 
         <div className="p-4">
           <div className="flex justify-between items-center mt-2">
