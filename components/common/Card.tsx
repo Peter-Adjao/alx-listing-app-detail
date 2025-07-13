@@ -2,6 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import { PropertyProps } from '@/interfaces';
 import Button from '@/components/common/Button';
+import router, { useRouter } from 'next/router';
+import { id } from 'date-fns/locale';
 
 const Card: React.FC<PropertyProps> = ({
   name,
@@ -10,6 +12,7 @@ const Card: React.FC<PropertyProps> = ({
   price,
   address,
 }) => {
+  const router = useRouter();
     return (
       <div className="overflow-hidden bg-white">
         <Image
@@ -36,8 +39,8 @@ const Card: React.FC<PropertyProps> = ({
 
           {/* Action Buttons */}
           <div className="mt-4 flex gap-2">
-            <Button label="Book Now" onClick={() => alert(`Booking ${name}`)} />
-            <Button label="Details" onClick={() => alert(`Viewing details for ${name}`)} />
+            <Button label="Book Now" onClick={() => router.push(`/booking/${id}`)} />
+        <Button label="Details" onClick={() => router.push(`/property/${id}`)} />
           </div>
         </div>
       </div>

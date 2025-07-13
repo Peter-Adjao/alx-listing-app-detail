@@ -1,9 +1,12 @@
-// components/common/Button.tsx
-import React from 'react';
-import { ButtonProps } from '@/interfaces';
+import Link from "next/link";
+import { ButtonProps } from "@/interfaces";
 
-const Button: React.FC<ButtonProps> = ({ label, onClick, type = 'button' }) => {
-  return (
+type SmartButtonProps = ButtonProps & {
+  href?: string;
+};
+
+const Button: React.FC<SmartButtonProps> = ({ label, onClick, type = "button", href }) => {
+  const buttonElement = (
     <button
       type={type}
       onClick={onClick}
@@ -12,6 +15,8 @@ const Button: React.FC<ButtonProps> = ({ label, onClick, type = 'button' }) => {
       {label}
     </button>
   );
+
+  return href ? <Link href={href}>{buttonElement}</Link> : buttonElement;
 };
 
-export default Button; // ✅ This line is required
+export default Button;
