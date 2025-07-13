@@ -1,61 +1,88 @@
-# 🏡 ALX Listing App
-A responsive, scalable property listing platform built with Next.js, TypeScript, and Tailwind CSS. This project showcases the transformation of mockups into a maintainable layout with dynamic routing and reusable components.
+## 🏡 ALX Listing App
+A responsive, scalable property listing platform built with Next.js, TypeScript, and Tailwind CSS, designed to showcase dynamic property listings, booking functionality, and user reviews. This app evolves from static mockups into a fully integrated experience using RESTful APIs and best practices in scalable frontend architecture.
 
-🚀 Milestone Objectives
-📍 Phase 00: Listing Page
-Break down the homepage mockup into reusable layout components.
+# 🚀 Project Highlights
+Transforms design mockups into reusable layout components.
 
-Render property listings from sample data.
+Implements dynamic routing via [id] for individual property views.
 
-Ensure responsive design and scalable structure.
+Integrates REST APIs using Axios for property data, bookings, and reviews.
 
-📍 Phase 01: Property Detail Page
-Implement dynamic routing using property id as route param.
+Handles form submissions with validation and error states.
 
-Display detailed property information, including reviews and booking functionality.
+Ensures maintainability, responsiveness, and dynamic rendering throughout.
 
-Break down the page into meaningful sections for reusability.
-
-🧱 Tech Stack
+# 🧱 Tech Stack
 Category	Tools Used
-Framework	Next.js, TypeScript
+Framework	Next.js, React, TypeScript
 Styling	Tailwind CSS
-Utilities	ESLint for code linting
 State	TBD (Context API or Redux planned)
+Utilities	Axios (API calls), ESLint (Linting)
+Mobile	Expo (for future React Native styling)
 
-📁 Project Structure Overview
+# 📁 Project Structure Overview
 bash
-alx-listing-app-01/
+alx-listing-app/
 ├── components/
-│   ├── layout/              # Header, Footer, Layout wrapper
-│   │   ├── Header.tsx
-│   │   ├── Footer.tsx
-│   │   └── Layout.tsx
-│   └── property/            # Detail page sections
+│   ├── layout/                  # Header, Footer, Layout wrapper
+│   └── property/                # Detail page sections
 │       ├── PropertyDetail.tsx
 │       ├── BookingSection.tsx
 │       └── ReviewSection.tsx
 ├── constants/
-│   └── index.ts             # PROPERTYLISTINGSAMPLE
+│   └── index.ts                # PROPERTYLISTINGSAMPLE or config
 ├── interfaces/
-│   └── index.ts             # TypeScript interfaces
+│   └── index.ts                # TypeScript interfaces
 ├── pages/
-│   ├── index.tsx            # Listing page
+│   ├── index.tsx               # Listing page
 │   └── property/
-│       └── [id].tsx         # Dynamic route for detail page
+│       └── [id].tsx            # Dynamic route for detail view
+│   └── booking/
+│       └── index.tsx           # Booking form submission
 ├── public/
 ├── styles/
 │   └── globals.css
 ├── tailwind.config.js
 └── tsconfig.json
 
-📸 Features
-📋 Listing Page: Displays a gallery of properties using reusable card components.
+# 🧩 Feature Summary
+📋 Listing Page (pages/index.tsx)
+Renders gallery of properties using reusable card components.
 
-🏷️ Property Detail: Dynamic [id] route shows name, rating, description, images, amenities, etc.
+Fetches dynamic data from the property listing API.
 
-🧾 Tabs Section: Description broken into "What we offer", "Reviews", "About host" (to be implemented).
+Handles loading and error states.
 
-💬 Review Section: User reviews rendered with names, avatars, and star ratings.
+# 🏷️ Property Detail (pages/property/[id].tsx)
+Displays name, rating, amenities, host info, and more.
 
-🏦 Booking Section: Price calculator and date pickers for a mock reservation experience.
+Uses useEffect to fetch property details via Axios.
+
+Gracefully handles broken or missing API responses.
+
+## 🧾 Tabbed Description Section (To be implemented)
+Tabs: What we offer | Reviews | About host
+
+## 💬 Review Section (ReviewSection.tsx)
+Fetches and renders user reviews with avatars and star ratings.
+
+Maps dynamic data into visual components with error handling.
+
+## 🏦 Booking Section (BookingSection.tsx)
+Price calculator and date picker for mock reservations.
+
+Validates form and submits booking data via POST request.
+
+# 📦 Installation & Setup
+bash
+# Clone the repository
+git clone https://github.com/your-username/alx-listing-app.git
+
+# Navigate into the project directory
+cd alx-listing-app
+
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
