@@ -1,10 +1,33 @@
+import { useEffect, useState } from "react";
+import api from "@/lib/axios";
 import Card from "@/components/common/Card";
 import Pill from "@/components/common/Pill";
-import { PROPERTYLISTINGSAMPLE } from "@/constants";
+import { Property } from "@/interfaces/types/property";
+
 
 const filters = ["Top Villa", "Self Checkin", "Private Pool"];
 
 export default function Home() {
+  const [properties, setProperties] = useState<Property[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchProperties = async () => {
+      try {
+        const response = await api.get("/properties");
+        setProperties(response.data);
+      } catch (err) {
+        setError("Failed to load properties.");
+        console.error("Error fetching properties:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProperties();
+  }, []);
+
   return (
     <main className="p-0 px-2">
       {/* Hero Section */}
@@ -28,12 +51,18 @@ export default function Home() {
       {/* Listings Title */}
       <h1 className="text-2xl font-bold mt-8 mb-4">Property Listings</h1>
 
-      {/* Property Listings Grid (dynamically rendered) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
-        {PROPERTYLISTINGSAMPLE.map((property, index) => (
-          <Card key={index} {...property} />
-        ))}
-      </div>
+      {/* Property Listings Grid */}
+      {loading ? (
+        <p>Loading properties...</p>
+      ) : error ? (
+        <p className="text-red-500">{error}</p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
+          {properties.map((property) => (
+            <Card key={property.id} {...property} />
+          ))}
+        </div>
+      )}
     </main>
   );
 }
